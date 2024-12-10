@@ -1,0 +1,344 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #34495e;
+}
+
+/* Menú lateral */
+/* Estilo general del aside */
+/* Estilo general del aside */
+/* Estilo general del aside */
+/* Estilo general del aside */
+/* Estilo general del aside */
+/* Menú lateral */
+/* Menú lateral */
+/* Menú lateral */
+.sidebar {
+    width: 250px; /* Ancho del aside desplegado */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #343a40; /* Fondo oscuro */
+    padding-top: 20px; /* Espaciado superior */
+    color: white; /* Color del texto */
+    overflow: hidden; /* Evitar scroll dentro del aside */
+    text-align: left; /* Alinear contenido de los enlaces a la izquierda */
+    transition: width 0.3s ease; /* Transición suave para colapsar/desplegar */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed {
+    width: 60px; /* Reducir el ancho */
+}
+
+/* Logo */
+.sidebar .logo {
+    text-align: center; /* Alinear el logo al centro */
+    margin-bottom: 20px; /* Espaciado debajo del logo */
+}
+
+.sidebar .logo img {
+    width: 60px; /* Tamaño original del logo */
+    transition: opacity 0.3s ease, width 0.3s ease; /* Transición para ajustar visibilidad y tamaño */
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0; /* Ocultar el logo completamente */
+    pointer-events: none; /* Evitar interacción con el logo colapsado */
+    width: 0; /* Reducir el tamaño del logo */
+}
+
+/* Perfil del usuario */
+.sidebar .user-profile {
+    transition: opacity 0.3s ease; /* Transición suave para ocultar contenido */
+    text-align: center; /* Mantener el perfil del usuario centrado */
+}
+
+.sidebar.collapsed .user-profile {
+    display: none; /* Ocultar perfil cuando el aside está colapsado */
+}
+
+/* Navegación del menú */
+.sidebar .nav {
+    text-align: left; /* Alinear la navegación a la izquierda */
+    padding-left: 15px; /* Añadir un espaciado desde el borde izquierdo */
+}
+
+.sidebar .nav-link {
+    color: #adb5bd; /* Color de los enlaces */
+    padding: 10px 10px; /* Ajustar espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre enlaces */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-align: left; /* Alinear texto de los enlaces a la izquierda */
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: #495057; /* Fondo más oscuro al hacer hover o activo */
+    color: white; /* Texto blanco */
+}
+
+.sidebar.collapsed .nav {
+    display: none; /* Ocultar la navegación cuando el aside está colapsado */
+}
+
+/* Botón de colapso/despliegue */
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 20px; /* Posición superior */
+    left: 190px; /* Mover el botón hacia el lado derecho dentro del aside */
+    width: 40px; /* Tamaño del botón */
+    height: 40px;
+    background: #343a40; /* Mismo color que el aside */
+    color: white; /* Color del icono */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Hacerlo redondo */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para un diseño más atractivo */
+    z-index: 1001; /* Asegurarlo encima de otros elementos */
+    display: flex; /* Centrar el icono dentro del botón */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambiar el cursor al pasar por el botón */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed .toggle-btn {
+    left: 10px; /* Mantenerlo completamente visible al colapsar */
+}
+
+/* Icono dentro del botón */
+.sidebar .toggle-btn i {
+    font-size: 1.2rem; /* Tamaño del icono */
+}
+
+/* Menú desplegable */
+.sidebar .dropdown-menu {
+    background-color: #343a40; /* Fondo oscuro del menú desplegable */
+    border: none; /* Sin bordes */
+    margin-top: 0; /* Ajuste de margen */
+    box-shadow: none; /* Sin sombra */
+    display: none; /* Ocultar por defecto */
+    position: relative; /* Permitir superposición */
+    z-index: 1; /* Asegurar que el menú esté encima */
+    text-align: left; /* Alinear el texto a la izquierda */
+    padding: 5px 10px; /* Ajustar el espaciado interno */
+}
+
+/* Mostrar menú desplegable si tiene la clase "show" */
+.sidebar .dropdown-menu.show {
+    display: block; /* Mostrar el menú desplegable */
+}
+
+/* Estilo de los elementos del menú desplegable */
+.sidebar .dropdown-item {
+    color: white; /* Color del texto */
+    font-size: 0.9rem; /* Tamaño del texto */
+    display: block; /* Asegurar que los elementos no afecten a otros */
+    padding: 5px 15px; /* Ajustar espaciado interno */
+    text-align: left; /* Alinear las opciones del menú a la izquierda */
+}
+
+.sidebar .dropdown-item i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+    font-size: 0.9rem; /* Tamaño del icono reducido */
+}
+
+.sidebar .dropdown-item:hover {
+    background-color: #495057; /* Fondo al pasar el cursor */
+    color: white; /* Texto blanco al pasar el cursor */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Espaciado normal cuando el aside está desplegado */
+    padding: 20px; /* Espaciado interno */
+    position: relative; /* Posicionamiento relativo */
+    padding-bottom: 100px; /* Espacio adicional para la paginación */
+    transition: margin-left 0.3s ease; /* Transición suave para ajustar el contenido */
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 60px; /* Espaciado cuando el aside está colapsado */
+}
+
+
+/* Título de "Gestor de Empresas" centrado y estilizado */
+.header-title {
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de búsqueda, botones de acción y contador de empresas */
+.search-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-buttons-container .search-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-buttons-container .buttons-left {
+    display: flex;
+    gap: 10px;
+}
+
+.search-buttons-container .counter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2980b9;
+    background-color: #ecf0f1;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+/* Botones de "Añadir Empresa", "Añadir Contacto" y el botón de búsqueda */
+.search-form input[type="text"],
+.search-form input[type="date"] {
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px;
+    max-width: 250px;
+    margin-right: 15px;
+    font-size: 1rem;
+}
+
+.search-form button,
+.buttons-left .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-form button:hover,
+.buttons-left .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla de empresas */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f2f6;
+}
+
+/* Botones de acción en la tabla */
+.table td .btn {
+    font-size: 0.85rem;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Paginación fija en la parte inferior */
+.pagination-container {
+    position: fixed;
+    bottom: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    background-color: #f4f6f8;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pagination-container .pagination {
+    justify-content: center;
+}
+
+.pagination-container .pagination .page-item .page-link {
+    color: #343a40;
+    border: 1px solid #343a40;
+}
+
+.pagination-container .pagination .page-item.active .page-link {
+    background-color: #343a40;
+    color: #ffffff;
+    border-color: #343a40;
+}
+
+.pagination-container .pagination .page-item .page-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+    border-color: #495057;
+}
+
+.results-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+/* Botón de cerrar sesión en rojo */
+.logout-btn {
+    background-color: #d9534f; /* Rojo predeterminado */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+        padding-bottom: 100px;
+    }
+    .pagination-container {
+        left: 0;
+        width: 100%;
+    }
+    .search-form {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+

@@ -1,0 +1,337 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #013e7d;
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 250px; /* Ancho del aside desplegado */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #002855; /* Fondo oscuro */
+    padding-top: 20px; /* Espaciado superior */
+    color: white; /* Color del texto */
+    overflow: hidden; /* Evitar scroll dentro del aside */
+    text-align: left; /* Alinear contenido */
+    transition: width 0.3s ease; /* Transición suave */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed {
+    width: 60px; /* Reducir el ancho */
+}
+
+/* Logo */
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 60px;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+}
+
+/* Perfil del usuario */
+.sidebar .user-profile {
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .user-profile {
+    display: none;
+}
+
+/* Navegación del menú */
+.sidebar .nav {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.sidebar .nav-link {
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: #013e7d;
+    color: white;
+}
+
+.sidebar.collapsed .nav {
+    display: none;
+}
+
+/* Botón de colapso/despliegue */
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 20px;
+    left: 190px;
+    width: 40px;
+    height: 40px;
+    background: #002855;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.sidebar.collapsed .toggle-btn {
+    left: 10px;
+}
+
+/* Icono dentro del botón */
+.sidebar .toggle-btn i {
+    font-size: 1.2rem;
+}
+
+/* Menú desplegable */
+.sidebar .dropdown-menu {
+    background-color: #002855;
+    border: none;
+    margin-top: 0;
+    box-shadow: none;
+    display: none;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    padding: 5px 10px;
+}
+
+/* Mostrar menú desplegable */
+.sidebar .dropdown-menu.show {
+    display: block;
+}
+
+.sidebar .dropdown-item {
+    color: white;
+    font-size: 0.9rem;
+    display: block;
+    padding: 5px 15px;
+    text-align: left;
+}
+
+.sidebar .dropdown-item:hover {
+    background-color: #013e7d;
+    color: white;
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    position: relative;
+    padding-bottom: 100px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 60px;
+}
+
+/* Título de cabecera */
+.header-title {
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    background-color: #002855;
+    margin-bottom: 30px;
+}
+
+/* Contenedor del buscador */
+.search-buttons-container {
+    display: flex;
+    justify-content: space-between; /* Espaciado entre elementos: izquierda, centro, derecha */
+    align-items: center; /* Alineación vertical uniforme */
+    margin-bottom: 20px;
+}
+
+/* Contenedor del buscador centrado */
+.search-buttons-container .search-form {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espaciado entre el campo de texto y el botón */
+}
+
+
+/* Botones de la izquierda (Empresa y Contacto) */
+.search-buttons-container .buttons-left {
+    display: flex;
+    gap: 10px; /* Espaciado entre botones */
+    justify-content: flex-start; /* Alinear hacia la izquierda */
+    align-items: center; /* Alineación vertical uniforme */
+}
+
+
+.search-buttons-container .counter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #013e7d;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-align: right; /* Asegura la alineación del texto */
+}
+
+/* Botones */
+.search-form button,
+.buttons-left .btn {
+    padding: 10px 20px;
+    background-color: #013e7d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-form button:hover,
+.buttons-left .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla de equipos */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f2f6;
+}
+
+/* Botones de acción en la tabla */
+.table td .btn {
+    font-size: 0.85rem;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+.table > thead {
+    background-color: #013e7d; /* Azul oscuro personalizado */
+    color: #ffffff; /* Texto blanco */
+}
+
+.table > thead th {
+    border: 1px solid #002855; /* Bordes en azul profundo */
+    text-align: left; /* Centrar el texto */
+    font-weight: bold; /* Hacer el texto en negrita */
+    padding: 12px; /* Espaciado interno */
+}
+
+/* Paginación fija en la parte inferior */
+.pagination-container {
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Para que no se superponga al sidebar */
+    width: calc(100% - 250px);
+    background-color: #f4f6f8;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pagination-container .pagination {
+    justify-content: center;
+}
+
+.pagination-container .pagination .page-item .page-link {
+    color: #002855; /* Color del texto para los enlaces de paginación */
+    border: 1px solid #002855; /* Borde del enlace de paginación */
+}
+
+.pagination-container .pagination .page-item.active .page-link {
+    background-color: #002855; /* Color de fondo para la página actual */
+    color: #ffffff; /* Color de texto para la página actual */
+    border-color: #002855; /* Borde para la página actual */
+}
+
+.pagination-container .pagination .page-item .page-link:hover {
+    background-color: #013e7d; /* Color de fondo al pasar el cursor */
+    color: #ffffff; /* Color del texto al pasar el cursor */
+    border-color: #013e7d; /* Borde al pasar el cursor */
+}
+
+.results-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Botón de cerrar sesión */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+        padding-bottom: 100px; /* Espacio para la paginación en móvil */
+    }
+    .pagination-container {
+        left: 0;
+        width: 100%;
+    }
+    .search-form {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+

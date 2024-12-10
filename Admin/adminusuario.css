@@ -1,0 +1,261 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #34495e;
+    padding: 20px;
+}
+
+/* Encabezado */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #2980b9;
+}
+
+/* Información del usuario logueado */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #ecf0f1;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.user-details p {
+    margin: 3px 0;
+    font-size: 0.85rem;
+    color: #34495e;
+}
+
+.btn-logout {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #c0392b;
+}
+
+/* Contenedor de acciones */
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-create {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-create:hover {
+    background-color: #27ae60;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-form input[type="text"] {
+    padding: 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.search-form select {
+    padding: 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.search-form button {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Tabla de usuarios */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #34495e;
+    font-size: 0.9rem;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+    text-transform: uppercase;
+}
+
+table tr:hover {
+    background-color: #f1f2f6;
+    cursor: pointer;
+}
+
+/* Estilos para botones de acción en la tabla */
+table td a {
+    padding: 6px 12px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+table td a:nth-child(1) {
+    background-color: #3498db;
+}
+
+table td a:nth-child(1):hover {
+    background-color: #2980b9;
+}
+
+table td a:nth-child(2) {
+    background-color: #e74c3c;
+}
+
+table td a:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+table td a:nth-child(3) {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+table td a:nth-child(3):hover {
+    background-color: #f39c12;
+}
+
+table td a:nth-child(4) {
+    background-color: #8e44ad;
+}
+
+table td a:nth-child(4):hover {
+    background-color: #7f3b9e;
+}
+/* Botón de cerrar sesión en rojo */
+.logout-btn {
+    background-color: #d9534f; /* Rojo predeterminado */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+}
+/* Estilo responsivo para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .header-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .actions-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .search-form input[type="text"], .search-form select, .search-form button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table th, table td {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="cssLoginRegister.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Enlace a Font Awesome -->
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-left">
+                <h2>Bienvenidos a Intercovamex</h2>
+                <p>Si ya tienes una cuenta, inicia sesión aquí y diviértete.</p>
+            </div>
+            <div class="form-right">
+                <h2>Iniciar Sesión</h2>
+                <form action="login.php" method="POST" onsubmit="return validarLogin()">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i> <!-- Icono para el campo de email -->
+                        <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-key"></i> <!-- Icono para el campo de contraseña -->
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión" class="btn">
+                </form>
+                <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                <p><a href="olvide_contrasena.php">¿Olvidaste tu contraseña?</a></p>
+
+            </div>
+        </div>
+    </div>
+    <script src="validaciones.js"></script>
+</body>
+</html>
+

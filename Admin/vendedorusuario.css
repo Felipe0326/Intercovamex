@@ -1,0 +1,290 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #34495e;
+    padding: 30px;
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    background-color: #f8f9fa;
+    position: relative;
+    height: 140px;
+    z-index: 1;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    flex: 1;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #2980b9;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+/* Navegación en el header */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    background-color: #3498db;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #2980b9;
+}
+
+/* Tarjeta del usuario logueado */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 220px;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.user-details p {
+    margin: 3px 0;
+}
+
+.btn-logout {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    z-index: 3;
+}
+
+.btn-logout:hover {
+    background-color: #c0392b;
+}
+
+/* Contenedor para el botón de crear usuario y el formulario de búsqueda */
+.search-and-create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Botón de crear nuevo usuario alineado a la izquierda */
+.btn-create {
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-create:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Formulario de búsqueda centrado */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-form input[type="text"], .search-form select {
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px;
+    margin-right: 15px;
+    font-size: 1rem;
+    color: #34495e;
+}
+
+.search-form button {
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-form button:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabla de clientes */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ecf0f1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left; /* Alinea el contenido de las celdas a la izquierda */
+    border-bottom: 1px solid #bdc3c7;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+table td {
+    vertical-align: middle;
+    text-align: left; /* Alinea el contenido de las celdas a la izquierda */
+}
+
+
+table th {
+    background-color: #2980b9;
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+table tr:hover {
+    background-color: #d6eaf8;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+/* Acomodar las acciones en una fila */
+table td {
+    vertical-align: middle;
+    text-align: left;
+}
+
+table td .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilo para las acciones de cada cliente */
+table td a {
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+table td a:nth-child(1) {
+    background-color: #3498db;
+}
+
+table td a:nth-child(1):hover {
+    background-color: #2980b9;
+}
+
+table td a:nth-child(2) {
+    background-color: #e74c3c;
+}
+
+table td a:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+table td a:nth-child(3) {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+table td a:nth-child(3):hover {
+    background-color: #f39c12;
+}
+
+/* Estilo responsive para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    table th, table td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    form input[type="text"], form select, form button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table td .actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

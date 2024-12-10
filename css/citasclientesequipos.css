@@ -1,0 +1,312 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #013e7d
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 250px; /* Ancho del aside desplegado */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color:#002855; /* Fondo oscuro */
+    padding-top: 20px; /* Espaciado superior */
+    color: white; /* Color del texto */
+    overflow: hidden; /* Evitar scroll dentro del aside */
+    text-align: left; /* Alinear contenido de los enlaces a la izquierda */
+    transition: width 0.3s ease; /* Transición suave para colapsar/desplegar */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed {
+    width: 60px; /* Reducir el ancho */
+}
+
+/* Logo */
+.sidebar .logo {
+    text-align: center; /* Alinear el logo al centro */
+    margin-bottom: 20px; /* Espaciado debajo del logo */
+}
+
+.sidebar .logo img {
+    width: 60px; /* Tamaño original del logo */
+    transition: opacity 0.3s ease, width 0.3s ease; /* Transición para ajustar visibilidad y tamaño */
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0; /* Ocultar el logo completamente */
+    pointer-events: none; /* Evitar interacción con el logo colapsado */
+    width: 0; /* Reducir el tamaño del logo */
+}
+
+/* Perfil del usuario */
+.sidebar .user-profile {
+    transition: opacity 0.3s ease; /* Transición suave para ocultar contenido */
+    text-align: center; /* Mantener el perfil del usuario centrado */
+}
+
+.sidebar.collapsed .user-profile {
+    display: none; /* Ocultar perfil cuando el aside está colapsado */
+}
+
+/* Navegación del menú */
+.sidebar .nav {
+    text-align: left; /* Alinear la navegación a la izquierda */
+    padding-left: 15px; /* Añadir un espaciado desde el borde izquierdo */
+}
+
+.sidebar .nav-link {
+    color: white; /* Color de los enlaces */
+    padding: 10px 10px; /* Ajustar espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre enlaces */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-align: left; /* Alinear texto de los enlaces a la izquierda */
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color:  #002855;/* Fondo más oscuro al hacer hover o activo */
+    color: white; /* Texto blanco */
+}
+
+.sidebar.collapsed .nav {
+    display: none; /* Ocultar la navegación cuando el aside está colapsado */
+}
+
+/* Botón de colapso/despliegue */
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 20px; /* Posición superior */
+    left: 190px; /* Mover el botón hacia el lado derecho dentro del aside */
+    width: 40px; /* Tamaño del botón */
+    height: 40px;
+    background:  black;  /* Mismo color que el aside */
+    color: white; /* Color del icono */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Hacerlo redondo */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para un diseño más atractivo */
+    z-index: 1001; /* Asegurarlo encima de otros elementos */
+    display: flex; /* Centrar el icono dentro del botón */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambiar el cursor al pasar por el botón */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed .toggle-btn {
+    left: 10px; /* Mantenerlo completamente visible al colapsar */
+}
+
+/* Icono dentro del botón */
+.sidebar .toggle-btn i {
+    font-size: 1.2rem; /* Tamaño del icono */
+}
+
+/* Menú desplegable */
+.sidebar .dropdown-menu {
+    background-color: #002855; /* Fondo oscuro del menú desplegable */
+    border: none; /* Sin bordes */
+    margin-top: 0; /* Ajuste de margen */
+    box-shadow: none; /* Sin sombra */
+    display: none; /* Ocultar por defecto */
+    position: relative; /* Permitir superposición */
+    z-index: 1; /* Asegurar que el menú esté encima */
+    text-align: left; /* Alinear el texto a la izquierda */
+    padding: 5px 10px; /* Ajustar el espaciado interno */
+}
+
+/* Mostrar menú desplegable si tiene la clase "show" */
+.sidebar .dropdown-menu.show {
+    display: block; /* Mostrar el menú desplegable */
+}
+
+/* Estilo de los elementos del menú desplegable */
+.sidebar .dropdown-item {
+    color: white; /* Color del texto */
+    font-size: 0.9rem; /* Tamaño del texto */
+    display: block; /* Asegurar que los elementos no afecten a otros */
+    padding: 5px 15px; /* Ajustar espaciado interno */
+    text-align: left; /* Alinear las opciones del menú a la izquierda */
+}
+
+.sidebar .dropdown-item i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+    font-size: 0.9rem; /* Tamaño del icono reducido */
+}
+
+.sidebar .dropdown-item:hover {
+    background-color: #495057; /* Fondo al pasar el cursor */
+    color: white; /* Texto blanco al pasar el cursor */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Espaciado normal cuando el aside está desplegado */
+    padding: 20px; /* Espaciado interno */
+    position: relative; /* Posicionamiento relativo */
+    padding-bottom: 100px; /* Espacio adicional para la paginación */
+    transition: margin-left 0.3s ease; /* Transición suave para ajustar el contenido */
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 60px; /* Espaciado cuando el aside está colapsado */
+}
+
+/* Título de "Gestor de Equipos" centrado y estilizado */
+.header-title {
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    background-color:#002855; /* Mismo color que el aside */
+    margin-bottom: 30px;
+}
+
+/* Client Info Section */
+.client-info-section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-info-section h2 {
+    text-align: center;
+    color: #004080;
+    margin-bottom: 30px;
+}
+
+.client-info {
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.client-info p {
+    margin: 5px 0;
+}
+
+.client-info strong {
+    color: #004080;
+}
+
+/* Appointment Form */
+.appointment-form {
+    margin-top: 20px;
+}
+
+.appointment-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #004080;
+    font-weight: bold;
+}
+
+.appointment-form select,
+.appointment-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.appointment-form .btn-primary {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.appointment-form .btn-primary:hover {
+    background-color: #003366;
+}
+.logout-btn {
+    background-color: #d9534f; /* Rojo predeterminado */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+}
+
+/* Timeline Section */
+.timeline-section-title {
+    text-align: center;
+    color: #004080;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.timeline {
+    border-left: 3px solid #004080;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.timeline-event {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: #004080;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 3px #004080;
+}
+
+.timeline-content {
+    background-color: #f9f9ff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.timeline-content p {
+    margin: 5px 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.timeline-content p strong {
+    color: #004080;
+}

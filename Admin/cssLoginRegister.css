@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box; /* Ajustar el box-sizing */
+    margin: 0; /* Quitar márgenes */
+    padding: 0; /* Quitar padding */
+}
+
+body {
+    background: linear-gradient(to right, #a8c8e2, #bcdff1); /* Fondo degradado suave de azules */
+    font-family: 'Arial', sans-serif; /* Fuente general */
+    height: 100vh; /* Altura total de la ventana */
+    display: flex; /* Utilizar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+.container {
+    width: 100%; /* Ancho del contenedor */
+    max-width: 600px; /* Aumentado: Ancho máximo del contenedor */
+    background: white; /* Fondo blanco para el formulario */
+    padding: 40px; /* Aumentado: Espaciado interior */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada para dar ilusión de profundidad */
+    text-align: center; /* Centrar el texto */
+}
+
+h2 {
+    margin-bottom: 20px; /* Espaciado inferior */
+    color: #333; /* Color del texto */
+    font-size: 24px; /* Aumentado: Tamaño del título */
+}
+
+.form-left {
+    margin-bottom: 20px; /* Espaciado inferior para el contenedor izquierdo */
+}
+
+.label {
+    display: block; /* Hacer que las etiquetas ocupen toda la línea */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+.input-container {
+    position: relative; /* Para posicionar el icono dentro del input */
+}
+
+.input-container i {
+    position: absolute; /* Posicionamiento absoluto */
+    left: 10px; /* Espaciado desde la izquierda */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar la alineación vertical */
+    color: #3A7D9A; /* Color del ícono */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+    width: calc(100% - 40px); /* Ancho completo menos el espacio para el ícono */
+    padding: 15px; /* Espaciado interior */
+    margin: 15px 0; /* Aumentado: Espaciado vertical */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 18px; /* Aumentado: Tamaño de fuente */
+    transition: border-color 0.3s; /* Efecto de transición */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3A7D9A; /* Cambiar color del borde al enfocar */
+    outline: none; /* Quitar el contorno predeterminado */
+}
+
+input[type="submit"] {
+    background-color: #3A7D9A; /* Color de fondo del botón */
+    color: white; /* Color de texto del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.3s; /* Efecto de transición */
+    font-size: 18px; /* Aumentado: Tamaño de fuente del botón */
+    padding: 15px; /* Aumentado: Espaciado interior del botón */
+}
+
+input[type="submit"]:hover {
+    background-color: #2A5A73; /* Color al pasar el mouse */
+    transform: translateY(-2px); /* Elevar el botón al pasar el mouse */
+}
+
+p {
+    margin-top: 20px; /* Aumentado: Espaciado superior */
+    color: #666; /* Color del texto */
+    font-size: 16px; /* Aumentado: Tamaño de fuente */
+}
+
+a {
+    text-decoration: none; /* Sin subrayado */
+    color: #3A7D9A; /* Color del enlace */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar al pasar el mouse */
+}

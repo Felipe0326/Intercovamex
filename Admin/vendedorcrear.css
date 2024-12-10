@@ -1,0 +1,118 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fb;
+    color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Estilo del encabezado h2 */
+h2 {
+    font-size: 2rem;
+    color: #2980b9;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Estilos generales de los labels y los inputs */
+label {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #3498db;
+    background-color: #fff;
+}
+
+/* Botón de guardar */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de volver */
+a.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+a.btn-back:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo responsive para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}

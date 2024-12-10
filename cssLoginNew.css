@@ -1,0 +1,300 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #eaf4fc, #0353a1, #002855, #013e7d);
+    background-size: 400% 400%;
+    animation: gradientBG 6s ease infinite;
+    color: #002855;
+}
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.8s ease forwards;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+.register-info {
+    position: relative;
+    background-color: #002855; /* Fondo azul del contenedor */
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff; /* Color del texto */
+    text-align: center;
+    overflow: hidden; /* Asegura que las partículas no salgan del contenedor */
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Coloca el canvas detrás del contenido */
+    pointer-events: none; /* Evita interacción con el lienzo */
+    
+}
+
+.register-info h2, 
+.register-info p, 
+.register-info a, 
+.register-info img {
+    position: relative;
+    z-index: 1; /* Coloca el contenido sobre el canvas */
+}
+
+
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Formulario de inicio de sesión */
+.login-form {
+    flex: 1;
+    background-color: #fff;
+    color: #002855;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form .logo {
+    width: 250px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #002855;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #002855;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #0353a1;
+    box-shadow: 0 0 8px #0353a1;
+    outline: none;
+    animation: bounce 0.3s ease;
+}
+
+.input-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0353a1;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Opciones de recordar contraseña */
+.options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.options a {
+    color: #0353a1;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.options a:hover {
+    color: #013e7d;
+}
+
+.options a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: #013e7d;
+    transition: width 0.3s ease;
+}
+
+.options a:hover::after {
+    width: 100%;
+}
+
+/* Botón de inicio de sesión */
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: #0353a1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.btn-login:hover {
+    background-color: #013e7d;
+    transform: translateY(-2px);
+}
+
+.btn-login .spinner {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 3px solid white;
+    border-radius: 50%;
+    border-top: 3px solid #0353a1;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+.btn-login.loading .spinner {
+    display: block;
+}
+
+@keyframes spin {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Redes sociales */
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-login p {
+    font-size: 16px;
+    color: #002855;
+    margin-bottom: 10px;
+}
+
+.social-login a {
+    margin: 0 10px;
+    color: #0353a1;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-login a:hover {
+    transform: scale(1.1) rotate(10deg);
+    color: #013e7d;
+}
+
+/* Información del lado derecho */
+.register-info {
+    flex: 1;
+    background: #002855;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.register-info h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.register-info p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.btn-register {
+    background-color: transparent;
+    border: 2px solid #fff;
+    padding: 12px 25px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #fff;
+    color: #002855;
+    transform: translateY(-2px);
+}
+.register-info p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    color: #d1e7ff; /* Color de texto para buena visibilidad */
+}

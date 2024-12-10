@@ -1,0 +1,538 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #013e7d
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 250px; /* Ancho del aside desplegado */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color:#002855; /* Fondo oscuro */
+    padding-top: 20px; /* Espaciado superior */
+    color: white; /* Color del texto */
+    overflow: hidden; /* Evitar scroll dentro del aside */
+    text-align: left; /* Alinear contenido de los enlaces a la izquierda */
+    transition: width 0.3s ease; /* Transición suave para colapsar/desplegar */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed {
+    width: 60px; /* Reducir el ancho */
+}
+
+/* Logo */
+.sidebar .logo {
+    text-align: center; /* Alinear el logo al centro */
+    margin-bottom: 20px; /* Espaciado debajo del logo */
+}
+
+.sidebar .logo img {
+    width: 60px; /* Tamaño original del logo */
+    transition: opacity 0.3s ease, width 0.3s ease; /* Transición para ajustar visibilidad y tamaño */
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0; /* Ocultar el logo completamente */
+    pointer-events: none; /* Evitar interacción con el logo colapsado */
+    width: 0; /* Reducir el tamaño del logo */
+}
+
+/* Perfil del usuario */
+.sidebar .user-profile {
+    transition: opacity 0.3s ease; /* Transición suave para ocultar contenido */
+    text-align: center; /* Mantener el perfil del usuario centrado */
+}
+
+.sidebar.collapsed .user-profile {
+    display: none; /* Ocultar perfil cuando el aside está colapsado */
+}
+
+/* Navegación del menú */
+.sidebar .nav {
+    text-align: left; /* Alinear la navegación a la izquierda */
+    padding-left: 15px; /* Añadir un espaciado desde el borde izquierdo */
+}
+
+.sidebar .nav-link {
+    color: white; /* Color de los enlaces */
+    padding: 10px 10px; /* Ajustar espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre enlaces */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    text-align: left; /* Alinear texto de los enlaces a la izquierda */
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color:  #002855;/* Fondo más oscuro al hacer hover o activo */
+    color: white; /* Texto blanco */
+}
+
+.sidebar.collapsed .nav {
+    display: none; /* Ocultar la navegación cuando el aside está colapsado */
+}
+
+/* Botón de colapso/despliegue */
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 20px; /* Posición superior */
+    left: 190px; /* Mover el botón hacia el lado derecho dentro del aside */
+    width: 40px; /* Tamaño del botón */
+    height: 40px;
+    background:  black;  /* Mismo color que el aside */
+    color: white; /* Color del icono */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Hacerlo redondo */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para un diseño más atractivo */
+    z-index: 1001; /* Asegurarlo encima de otros elementos */
+    display: flex; /* Centrar el icono dentro del botón */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambiar el cursor al pasar por el botón */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed .toggle-btn {
+    left: 10px; /* Mantenerlo completamente visible al colapsar */
+}
+
+/* Icono dentro del botón */
+.sidebar .toggle-btn i {
+    font-size: 1.2rem; /* Tamaño del icono */
+}
+
+/* Menú desplegable */
+.sidebar .dropdown-menu {
+    background-color: #002855; /* Fondo oscuro del menú desplegable */
+    border: none; /* Sin bordes */
+    margin-top: 0; /* Ajuste de margen */
+    box-shadow: none; /* Sin sombra */
+    display: none; /* Ocultar por defecto */
+    position: relative; /* Permitir superposición */
+    z-index: 1; /* Asegurar que el menú esté encima */
+    text-align: left; /* Alinear el texto a la izquierda */
+    padding: 5px 10px; /* Ajustar el espaciado interno */
+}
+
+/* Mostrar menú desplegable si tiene la clase "show" */
+.sidebar .dropdown-menu.show {
+    display: block; /* Mostrar el menú desplegable */
+}
+
+/* Estilo de los elementos del menú desplegable */
+.sidebar .dropdown-item {
+    color: white; /* Color del texto */
+    font-size: 0.9rem; /* Tamaño del texto */
+    display: block; /* Asegurar que los elementos no afecten a otros */
+    padding: 5px 15px; /* Ajustar espaciado interno */
+    text-align: left; /* Alinear las opciones del menú a la izquierda */
+}
+
+.sidebar .dropdown-item i {
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+    font-size: 0.9rem; /* Tamaño del icono reducido */
+}
+
+.sidebar .dropdown-item:hover {
+    background-color: #495057; /* Fondo al pasar el cursor */
+    color: white; /* Texto blanco al pasar el cursor */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Espaciado normal cuando el aside está desplegado */
+    padding: 20px; /* Espaciado interno */
+    position: relative; /* Posicionamiento relativo */
+    padding-bottom: 100px; /* Espacio adicional para la paginación */
+    transition: margin-left 0.3s ease; /* Transición suave para ajustar el contenido */
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 60px; /* Espaciado cuando el aside está colapsado */
+}
+
+/* Título de "Gestor de Equipos" centrado y estilizado */
+.header-title {
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    background-color:#002855; /* Mismo color que el aside */
+    margin-bottom: 30px;
+}
+
+/* Estilos del contenedor de botones, buscador y contador de equipos */
+.search-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor centrado para el formulario de búsqueda y filtro */
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 50%;  /* Asegura que el buscador ocupe el 50% */
+}
+
+/* Ajustes para que el botón de "Añadir Nuevo Equipo" esté a la izquierda */
+.buttons-left {
+    display: flex;
+    gap: 10px;
+}
+
+/* Contador de equipos al lado derecho */
+.counter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #33415c;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+/* Ajustes para centrar el buscador y filtro de estatus */
+.search-buttons-container .search-form input[type="text"],
+.search-buttons-container .search-form select,
+.search-buttons-container .search-form button {
+    margin: 0;
+}
+
+/* Limitar el tamaño de los inputs (buscador y filtro) */
+.search-form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px; /* Limita el ancho del campo de texto */
+    font-size: 1rem;
+}
+
+.search-form select {
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px;
+    font-size: 1rem;
+    width: 150px; /* Limita el tamaño del selector */
+    margin-right: 10px;
+}
+
+.search-form button,
+.buttons-left .btn {
+    padding: 10px 20px;
+    background-color:#33415c; /* Nuevo color azul */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-form button:hover,
+.buttons-left .btn:hover {
+    background-color: #001333; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Contenedor de la tabla */
+.table-wrapper {
+    margin-bottom: 80px; /* Deja espacio para la paginación */
+    height: calc(100vh - 80px); /* Altura máxima para la tabla, dejando espacio para la paginación */
+    overflow-y: auto; /* Permite desplazarse si la tabla es más alta que el espacio disponible */
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+}
+
+/* Tabla de equipos */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    table-layout: fixed; /* Asegura que la tabla se ajuste dentro del contenedor */
+}
+
+/* Encabezado y celdas */
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f2f6;
+}
+
+/* Botones de acción en la tabla */
+.table td .btn {
+    font-size: 0.85rem;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.table > thead {
+    background-color: #013e7d; /* Azul oscuro personalizado */
+    color: #ffffff; /* Texto blanco */
+}
+
+.table > thead th {
+    border: 1px solid #002855; /* Bordes en azul profundo */
+    text-align: left; /* Centrar el texto */
+    font-weight: bold; /* Hacer el texto en negrita */
+    padding: 12px; /* Espaciado interno */
+}
+/* Paginación */
+.pagination-container {
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Para que no se superponga al sidebar */
+    width: calc(100% - 250px); /* Ajustar el ancho cuando el sidebar está desplegado */
+    background-color: #f4f6f8;
+    padding: 5px 0 0 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10; /* Asegura que la paginación esté encima de otros elementos */
+    transition: width 0.3s ease, left 0.3s ease; /* Transición suave para el ancho y la posición */
+}
+
+.sidebar.collapsed ~ .pagination-container {
+    width: calc(100% - 60px); /* Ajustar el ancho cuando el sidebar está colapsado */
+    left: 60px; /* Alineación con el contenido cuando el sidebar está colapsado */
+}
+
+/* Estilo de la paginación */
+.pagination-container .pagination {
+    justify-content: center;
+}
+
+.pagination-container .pagination .page-item .page-link {
+    color: #002855; /* Color del texto para los enlaces de paginación */
+    border: 1px solid #002855; /* Borde del enlace de paginación */
+}
+
+.pagination-container .pagination .page-item.active .page-link {
+    background-color: #002855; /* Color de fondo para la página actual */
+    color: #ffffff; /* Color de texto para la página actual */
+    border-color: #002855; /* Borde para la página actual */
+}
+
+.pagination-container .pagination .page-item .page-link:hover {
+    background-color: #013e7d; /* Color de fondo al pasar el cursor */
+    color: #ffffff; /* Color del texto al pasar el cursor */
+    border-color: #013e7d; /* Borde al pasar el cursor */
+}
+
+.results-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+/* Copyright */
+.Copyright {
+    background-color: #002855; /* Fondo oscuro */
+    text-align: center; /* Centra el texto */
+    padding: 5px 10px 0 0; /* Espaciado vertical */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para el diseño */
+    color: #ffffff;
+    width: 100%; /* Asegura que el Copyright ocupe todo el ancho disponible */
+    transition: width 0.3s ease; /* Transición suave para el cambio de ancho */
+    margin-left: auto; /* Alinea el elemento */
+    margin-right: auto; /* Alinea el elemento */
+}
+
+/* Cuando el sidebar está colapsado */
+.sidebar.collapsed ~ .Copyright {
+    width: calc(100% - 60px); /* Ajustar el ancho cuando el sidebar está colapsado */
+    margin-left: 60px; /* Alineación con el contenido cuando el sidebar está colapsado */
+}
+
+
+
+/* Botón de cerrar sesión en rojo */
+.logout-btn {
+    background-color: #d9534f; /* Rojo predeterminado */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+}
+/* Estilo del numerito de solicitudes */
+.solicitudes-link .badge {
+    background-color: #d9534f; /* Fondo rojo */
+    color: white; /* Texto blanco */
+    border-radius: 50%; /* Hacerlo circular */
+    padding: 5px 10px; /* Espaciado interno */
+    font-size: 0.8rem; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    position: absolute; /* Para superponer correctamente */
+    top: -5px; /* Ajustar posición vertical */
+    right: 10px; /* Ajustar posición horizontal */
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en el enlace para cambiar el color del numerito */
+.solicitudes-link:hover .badge {
+    background-color: #c9302c; /* Rojo más oscuro al pasar el cursor */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Menú lateral */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    /* Contenido principal */
+    .content {
+        margin-left: 0;
+        padding-bottom: 100px; /* Espacio para la paginación en móvil */
+    }
+
+    /* Paginación */
+    .pagination-container {
+        left: 0;
+        width: 100%;
+    }
+
+    .pagination-container .pagination .page-item .page-link {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    .pagination-container .pagination .page-item.active .page-link {
+        font-size: 0.8rem;
+    }
+
+    /* Botones de búsqueda y otros */
+    .buttons-left, .search-buttons-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Coloca los botones en columna en pantallas pequeñas */
+        align-items: center; /* Centra los botones */
+        gap: 10px; /* Espacio entre los botones */
+    }
+
+    .search-form {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column; /* Coloca los elementos de búsqueda en columna */
+        align-items: center; /* Centra los elementos de búsqueda */
+        gap: 10px; /* Espacio entre los campos */
+    }
+
+    .header-title {
+        font-size: 2rem;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Ajustes para la tabla */
+    .table-wrapper {
+        margin-bottom: 80px;
+        height: auto;
+        overflow-x: auto; /* Permite el desplazamiento horizontal si la tabla es demasiado grande */
+    }
+
+    .table td, .table th {
+        font-size: 0.9rem;
+        padding: 10px;
+        display: block; /* Cambia la visualización a bloque para mejor adaptación */
+    }
+
+    .table td .btn {
+        font-size: 0.75rem;
+        margin-right: 5px;
+        display: block; /* Hace que los botones se muestren como bloques */
+        margin-bottom: 5px; /* Espacio entre los botones */
+    }
+
+    /* Ajustes para los botones (por ejemplo, "Añadir Nuevo Equipo", "Cerrar Sesión") */
+    .logout-btn, .buttons-left .btn {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+        width: 100%; /* Los botones ocuparán todo el ancho disponible */
+        margin-top: 10px; /* Añade algo de margen superior para separación */
+    }
+
+    /* Ajustes para el numerito de solicitudes */
+    .solicitudes-link .badge {
+        font-size: 0.8rem;
+        padding: 5px;
+        margin-top: 5px; /* Espacio entre el numerito y el texto */
+    }
+
+    /* Ajuste en los enlaces del sidebar */
+    .sidebar .nav-link {
+        font-size: 0.9rem;
+    }
+
+    /* Logo del sidebar */
+    .sidebar .logo img {
+        width: 40px;
+    }
+
+    /* Botón de colapso del sidebar */
+    .sidebar .toggle-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .sidebar .toggle-btn i {
+        font-size: 1.2rem;
+    }
+
+    /* Ajustes adicionales para los iconos en los botones */
+    .sidebar .nav-link i {
+        font-size: 1rem; /* Reduce el tamaño de los iconos en dispositivos pequeños */
+    }
+    
+    /* Ajustes adicionales para las tarjetas de los items de la tabla */
+    .table td {
+        background-color: #f9f9f9; /* Fondo gris claro para cada celda */
+        border-radius: 8px; /* Bordes redondeados para cada celda */
+        margin-bottom: 10px; /* Espacio entre celdas */
+        padding: 10px;
+    }
+
+    /* Para las filas de la tabla convertidas en bloques */
+    .table td::before {
+        content: attr(data-label); /* Mostrar una etiqueta antes del valor */
+        font-weight: bold;
+        color: #002855; /* Color para las etiquetas */
+        display: block;
+        margin-bottom: 5px; /* Espacio entre la etiqueta y el valor */
+    }
+}

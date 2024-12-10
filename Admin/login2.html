@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="cssLoginNew.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <!-- Logo agregado -->
+            <img src="uploads/logolargo.png" alt="Logo Intercovamex" class="logo">
+            <h2>Inicia Sesión</h2>
+            <form id="loginForm" action="login.php" method="POST">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember"> Recordarme
+                    </label>
+                    <a href="olvide_contrasena.php">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn-login">
+                    Iniciar Sesión
+                    <span class="spinner"></span>
+                </button>
+                <div class="social-login">
+                    <p>Redes Sociales</p>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </form>
+        </div>
+        <div class="register-info">
+            <h2>Realiza Tu Servicio Técnico Aquí</h2>
+    <p> 
+        Nuestro equipo de expertos está listo para ayudarte a resolver cualquier problema técnico de manera rápida y eficiente. 
+        ¡Confía en nosotros para brindarte soluciones a la medida de tus necesidades!
+    </p>
+            <a href="registro.php" class="btn-register">Registrarse</a>
+            <img src="uploads/icono-servicio.png" alt="Ícono de servicio técnico" class="service-icon">
+        </div>
+        
+        
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #34495e;
+    font-size: 1rem; /* Tamaño base uniforme */
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 250px; /* Ancho del aside desplegado */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #343a40; /* Fondo oscuro */
+    padding-top: 20px; /* Espaciado superior */
+    color: white; /* Color del texto */
+    overflow: hidden; /* Evitar scroll dentro del aside */
+    text-align: center; /* Centrar contenido horizontalmente */
+    transition: width 0.3s ease; /* Transición suave para colapsar/desplegar */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed {
+    width: 60px; /* Reducir el ancho */
+}
+
+/* Logo */
+.sidebar .logo img {
+    width: 60px; /* Tamaño original del logo */
+    margin-bottom: 15px; /* Espaciado debajo del logo */
+    transition: opacity 0.3s ease, width 0.3s ease; /* Transición para ajustar visibilidad y tamaño */
+}
+
+.sidebar.collapsed .logo img {
+    opacity: 0; /* Ocultar el logo completamente */
+    pointer-events: none; /* Evitar interacción con el logo colapsado */
+    width: 0; /* Reducir el tamaño del logo */
+}
+
+/* Perfil del usuario */
+.sidebar .user-profile {
+    transition: opacity 0.3s ease; /* Transición suave para ocultar contenido */
+}
+
+.sidebar.collapsed .user-profile {
+    display: none; /* Ocultar perfil cuando el aside está colapsado */
+}
+
+/* Navegación del menú */
+.sidebar .nav-link {
+    color: #adb5bd; /* Color de los enlaces */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre enlaces */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: #495057; /* Fondo más oscuro al hacer hover o activo */
+    color: white; /* Texto blanco */
+}
+
+.sidebar.collapsed .nav {
+    display: none; /* Ocultar la navegación cuando el aside está colapsado */
+}
+
+/* Botón de colapso/despliegue */
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 20px; /* Posición superior */
+    left: 190px; /* Mover el botón hacia el lado derecho dentro del aside */
+    width: 40px; /* Tamaño del botón */
+    height: 40px;
+    background: #343a40; /* Mismo color que el aside */
+    color: white; /* Color del icono */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Hacerlo redondo */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para un diseño más atractivo */
+    z-index: 1001; /* Asegurarlo encima de otros elementos */
+    display: flex; /* Centrar el icono dentro del botón */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambiar el cursor al pasar por el botón */
+}
+
+/* Cuando el aside está colapsado */
+.sidebar.collapsed .toggle-btn {
+    left: 10px; /* Mantenerlo completamente visible al colapsar */
+}
+
+/* Icono dentro del botón */
+.sidebar .toggle-btn i {
+    font-size: 1.2rem; /* Tamaño del icono */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Espaciado normal cuando el aside está desplegado */
+    padding: 20px; /* Espaciado interno */
+    position: relative; /* Posicionamiento relativo */
+    padding-bottom: 100px; /* Espacio adicional para la paginación */
+    transition: margin-left 0.3s ease; /* Transición suave para ajustar el contenido */
+}
+
+.sidebar.collapsed ~ .content {
+    margin-left: 60px; /* Espaciado cuando el aside está colapsado */
+}
+
+
+/* Título centrado y estilizado */
+.header-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    background-color: #343a40;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de búsqueda y contador */
+.search-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre el filtro y el contador */
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.search-buttons-container form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-grow: 1; /* Permite centrar el formulario */
+}
+
+.search-buttons-container .counter {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2980b9;
+    background-color: #ecf0f1;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+
+/* Tabla */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem; /* Tamaño uniforme */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f2f6;
+}
+
+.table td .btn {
+    font-size: 0.9rem; /* Tamaño uniforme */
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.table td img {
+    max-width: 80px; /* Consistente con el diseño base */
+    border-radius: 8px;
+}
+
+/* Paginación fija */
+.pagination-container {
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Ajuste para sidebar */
+    width: calc(100% - 250px);
+    background-color: #f4f6f8;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pagination-container .pagination {
+    justify-content: center;
+}
+
+.pagination-container .pagination .page-item .page-link {
+    color: #343a40;
+    border: 1px solid #343a40;
+    border-radius: 25px;
+}
+
+.pagination-container .pagination .page-item.active .page-link {
+    background-color: #343a40;
+    color: white;
+    border-color: #343a40;
+}
+
+.pagination-container .pagination .page-item .page-link:hover {
+    background-color: #495057;
+    color: white;
+    border-color: #495057;
+}
+
+.results-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+        padding-bottom: 30px;
+    }
+    .pagination-container {
+        left: 0;
+        width: 100%;
+    }
+    .search-form {
+        width: 100%;
+        justify-content: center;
+    }
+    .counter {
+        margin-top: 10px;
+    }
+    .btn-primary {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,97 @@
+/* Reinicio general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fb;
+    color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    max-width: 100%;
+}
+
+/* Título */
+h2 {
+    font-size: 2rem;
+    color: #0353a1;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Grid de información */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-grid p {
+    font-size: 1rem;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* Botón de regresar */
+.btn-back-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #0353a1;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: #013e7d;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Estilo responsive para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-back {
+        font-size: 0.9rem;
+    }
+}
