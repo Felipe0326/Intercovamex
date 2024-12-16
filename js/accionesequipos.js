@@ -33,10 +33,20 @@ document.getElementById('eliminarEquipo')?.addEventListener('click', () => {
     }
 });
 
-// Acción para Consultar
+// Acción para Consultar (Equipo específico)
 document.getElementById('consultarEquipo')?.addEventListener('click', () => {
     if (selectedId) {
         window.location.href = `equipos_consultar.php?id=${selectedId}`;
+    } else {
+        alert('Seleccione un registro para consultar.');
+    }
+});
+
+// Acción para Consultar Otro (Acción adicional para consultar otro equipo)
+document.getElementById('consultarOtroEquipo')?.addEventListener('click', () => {
+    if (selectedId) {
+        // Si se desea abrir otro equipo en una vista diferente o realizar otra acción
+        window.location.href = `equipos_consultar_otro.php?id=${selectedId}`;
     } else {
         alert('Seleccione un registro para consultar.');
     }

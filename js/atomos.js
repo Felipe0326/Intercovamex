@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             radius: Math.random() * 4 + 1,
-            dx: (Math.random() - 0.5) * 2,
-            dy: (Math.random() - 0.5) * 2,
+            dx: (Math.random() - 0.5) * 0.5, // Reducir la velocidad
+            dy: (Math.random() - 0.5) * 0.5, // Reducir la velocidad
         });
     }
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Dibujar círculo
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            ctx.fillStyle = "#000000"; // Color negro para las partículas
+            ctx.fillStyle = "#00BFFF"; // Color azul brillante para las partículas
             ctx.fill();
             ctx.closePath();
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ctx.beginPath();
                     ctx.moveTo(particle.x, particle.y);
                     ctx.lineTo(otherParticle.x, otherParticle.y);
-                    ctx.strokeStyle = `rgba(0, 0, 0, ${1 - dist / 100})`; // Color negro para las líneas
+                    ctx.strokeStyle = `rgba(0, 191, 255, ${1 - dist / 100})`; // Color azul brillante para las líneas
                     ctx.stroke();
                     ctx.closePath();
                 }

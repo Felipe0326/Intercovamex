@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const startTimestamp = localStorage.getItem(`startTimestamp-${citaId}`);
 
             // Realizar consulta AJAX para obtener el estado actualizado de la cita
-            fetch(`get_estatus.php?citaId=${citaId}`)
+            fetch(`../../citas/backend/get_estatus.php?citaId=${citaId}`)
                 .then(response => response.json())
                 .then(data => {
                     const estatusActual = data.estatus.trim();
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function guardarHoraInicio(citaId, timestamp) {
         const horaInicio = new Date(timestamp).toISOString();
 
-        fetch('guardar_horainicio.php', {
+        fetch('../../citas/backend/guardar_horainicio.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['rol'] = $cliente['RolId'];
         
         // Redirigir a la vista de cliente
-        header("Location: ../citasclientes/citas_clienteslogin.php");
+        header("Location: ../citasclientes/frontend/citas_clienteslogin.php");
         exit();
     } else {
         // Si no es cliente, verificar en la tabla de Empleados
@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirigir según el rol
             switch ($empleado['RolId']) {
-                case 1: header("Location: adminvistas.php"); break; // Administrador
-                case 3: header("Location: ../dashboard/dashboard.php"); break; // Vendedor
-                case 4: header("Location: ../dashboard/dashboard.php"); break; // Servicio
-                case 5: header("Location: ../dashboard/dashboard.php"); break; // Coordinador
+                case 1: header("Location: ../dashboard/frontend/dashboard.php"); break; // Administrador
+                case 3: header("Location: ../dashboard/frontend/dashboard.php"); break; // Vendedor
+                case 4: header("Location: ../dashboard/frontend/dashboard.php"); break; // Servicio
+                case 5: header("Location: ../dashboard/frontend/dashboard.php"); break; // Coordinador
                 default: header("Location: login.html"); break;
             }
             exit();

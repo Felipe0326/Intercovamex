@@ -255,25 +255,13 @@ body {
 .buttons-left .btn:hover {
     background-color: #001333; /* Azul más oscuro al pasar el cursor */
 }
-
-/* Contenedor de la tabla */
-.table-wrapper {
-    margin-bottom: 80px; /* Deja espacio para la paginación */
-    height: calc(100vh - 80px); /* Altura máxima para la tabla, dejando espacio para la paginación */
-    overflow-y: auto; /* Permite desplazarse si la tabla es más alta que el espacio disponible */
-    overflow-x: hidden; /* Oculta el scroll horizontal */
-}
-
 /* Tabla de equipos */
 .table {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    table-layout: fixed; /* Asegura que la tabla se ajuste dentro del contenedor */
 }
 
-/* Encabezado y celdas */
 .table th, .table td {
     padding: 15px;
     text-align: left;
@@ -303,24 +291,21 @@ body {
 }
 /* Paginación */
 .pagination-container {
-    position: fixed;
-    bottom: 0;
-    left: 250px; /* Para que no se superponga al sidebar */
-    width: calc(100% - 250px); /* Ajustar el ancho cuando el sidebar está desplegado */
     background-color: #f4f6f8;
-    padding: 5px 0 0 0;
+    padding: 10px 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    z-index: 10; /* Asegura que la paginación esté encima de otros elementos */
-    transition: width 0.3s ease, left 0.3s ease; /* Transición suave para el ancho y la posición */
+    width: calc(100% - 250px); /* Ajustar el ancho cuando el sidebar está desplegado */
+    transition: width 0.3s ease; /* Transición suave para cambiar el ancho */
+    margin-left: 250px; /* Alineación con el contenido cuando el sidebar está desplegado */
 }
 
 .sidebar.collapsed ~ .pagination-container {
     width: calc(100% - 60px); /* Ajustar el ancho cuando el sidebar está colapsado */
-    left: 60px; /* Alineación con el contenido cuando el sidebar está colapsado */
+    margin-left: 60px; /* Alineación con el contenido cuando el sidebar está colapsado */
 }
 
-/* Estilo de la paginación */
+/* Estilos para la paginación */
 .pagination-container .pagination {
     justify-content: center;
 }
@@ -349,15 +334,15 @@ body {
 }
 /* Copyright */
 .Copyright {
-    background-color: #002855; /* Fondo oscuro */
+    background-color: #002855; /* Fondo claro */
     text-align: center; /* Centra el texto */
-    padding: 5px 10px 0 0; /* Espaciado vertical */
+    padding: 10px 0; /* Espaciado vertical */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra para el diseño */
+    position: relative;
     color: #ffffff;
-    width: 100%; /* Asegura que el Copyright ocupe todo el ancho disponible */
-    transition: width 0.3s ease; /* Transición suave para el cambio de ancho */
-    margin-left: auto; /* Alinea el elemento */
-    margin-right: auto; /* Alinea el elemento */
+    width: calc(100% - 250px); /* Ajusta el ancho cuando el sidebar está desplegado */
+    transition: width 0.3s ease; /* Transición suave para cambiar el ancho */
+    margin-left: 250px; /* Alineación con el contenido cuando el sidebar está desplegado */
 }
 
 /* Cuando el sidebar está colapsado */
