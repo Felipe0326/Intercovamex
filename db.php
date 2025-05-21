@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "IntercovamexFinal";
+$dbname = "bd_portal";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);

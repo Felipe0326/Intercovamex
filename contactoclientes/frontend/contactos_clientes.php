@@ -38,18 +38,8 @@ if (isset($_GET['contactoClienteId'])) {
                     <div class="contact-image">
                         <img src="../../uploads/logolargo.png" alt="Imagen de Contacto" class="img-fluid">
                     </div>
-                    <h2>¡Escríbenos!</h2>
-                    <?php if ($folioGenerado): ?>
-                        <p><strong>Folio generado:</strong> <?php echo $folioGenerado; ?></p>
-                        <form method="POST" action="../backend/generar_folio_pdfcontacto.php">
-                            <input type="hidden" name="folio" value="<?php echo $folioGenerado; ?>">
-                            <button type="submit" class="submit-button">
-                                Descargar Folio en PDF
-                            </button>
-                        </form>
-                    <?php else: ?>
-                        <p><strong>Error:</strong> No se encontró un folio asociado.</p>
-                    <?php endif; ?>
+                    <h2>Crear cuenta</h2>
+                    
 
                     <!-- Formulario principal -->
                     <form action="../backend/contacto_procesar_cliente.php" method="POST">
@@ -135,22 +125,11 @@ if (isset($_GET['contactoClienteId'])) {
                 </div>
 
                 <div class="contact-info">
-                    <!-- Formulario para buscar el historial de una cita por folio -->
-                    <form action="historial_citasclientes.php" method="GET" style="margin-top: 40px; padding: 20px; border-top: 2px solid #ddd;">
-                        <h2 style="text-align: center; color: #004080;">Consultar Historial de Cita</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="folio">Ingrese el folio de la cita:</label>
-                                <input type="text" id="folio" name="folio" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                            </div>
-                        </div>
-                        <button type="submit" class="submit-button" style="margin-top: 20px; width: 100%;">Ver Historial de Citas</button>
-                    </form>
 
                     <!-- Contenedor de inicio de sesión -->
                     <div class="login-container" style="margin-top: 40px;">
                         <div class="login-message">
-                            <p><strong>¿Ya tienes cuenta?</strong> ¡Inicia sesión para gestionar tus citas y servicios de manera fácil y rápida!</p>
+                            <p><strong>¿Ya tienes cuenta?</strong> ¡Inicia sesión para consultar tu crédito de manera fácil y rápida!</p>
                         </div>
                         <div class="login-button-container">
                             <button type="button" class="login-button" onclick="window.location.href='../../login.html'">Inicia sesión aquí</button>

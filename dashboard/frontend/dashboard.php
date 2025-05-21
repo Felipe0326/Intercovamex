@@ -1,80 +1,94 @@
 <?php
-include('../../db.php'); // Conexión a la base de datos
-include('../../roles/auth.php');
-include('../../solicitudes_logic.php');
-// Obtener las solicitudes pendientes y datos del usuario
-$solicitudesPendientes = obtenerSolicitudesPendientes($conn);
+include('../../db.php');                  // Conexión a la base de datos
+include('../../roles/auth.php');          // Autenticación de usuario
 $user = getLoggedInUser($conn, $_SESSION['usuarioId']);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Contactos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../../css/crudusuarios.css"> <!-- Archivo CSS personalizado -->
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <!-- Tu CSS global para la barra lateral -->
+    <link rel="stylesheet" href="/Portal_VFelipe/css/global.css">
 </head>
+
 <body>
-    <!-- Menú lateral -->
-    <aside class="sidebar  p-3">
-        <div class="toggle-btn">
-            <button id="toggleSidebar" class="btn btn-dark"><i class="fas fa-bars"></i></button>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/Portal_VFelipe/includes/sidebar_adm.php'); ?>
+    <!-- Topbar (opcional) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+        <div class="container-fluid position-relative">
+            <button class="btn btn-outline-secondary d-lg-none" id="openSidebar" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span class="navbar-brand fw-bold text-dark">Panel de Administración</span>
         </div>
-        <div class="logo">
-            <img src="../../uploads/logocortoblanco.png" alt="Logo de Intercovamex">
-        </div>
-        <div class="user-profile text-center">
-    <p class="welcome-text">Intercovamex</p>
-    <h4><?php echo $user['Nombre'] . ' ' . $user['Apellido']; ?></h4>
-    <a href="../logout.php" class="btn logout-btn mt-2">Cerrar Sesión</a>
-    </div>
+    </nav>
 
-        <nav class="mt-4">
-    <ul class="nav flex-column">
-        <!-- Nuevo ítem para Dashboard -->
-        <li class="nav-item">
-            <a href="../../dashboard/frontend/dashboard.php" class="nav-link text-white">
-                <i class="fas fa-chart-line"></i> Dashboard
-            </a>
-        </li>
-        <li class="nav-item"><a href="../../equipos/frontend/equipos_usuarios.php" class="nav-link text-white"><i class="fas fa-cogs"></i> Gestión de Equipos</a></li>
-        <li class="nav-item"><a href="../../empresa/frontend/empresa_usuarios.php" class="nav-link text-white"><i class="fas fa-building"></i> Gestión de Empresas</a></li>
-        <li class="nav-item"><a href="../../Empleados/frontend/empleados_usuarios.php" class="nav-link text-white"><i class="fas fa-user-tie"></i> Gestión de Empleados</a></li>
-        <li class="nav-item"><a href="../../citas/frontend/citas_usuarios.php" class="nav-link text-white"><i class="fas fa-calendar-alt"></i> Gestión de Citas</a></li>
-        <li class="nav-item">
-            <a href="../../solicitudes/frontend/administrar_contactos.php" class="nav-link text-white position-relative">
-                <i class="fas fa-envelope"></i> Gestión de Solicitudes Clientes
-                <?php if ($solicitudesPendientes > 0): ?>
-                    <span class="badge badge-danger position-absolute" style="top: 0; right: 10px;"><?php echo $solicitudesPendientes; ?></span>
-                <?php endif; ?>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="../../ontacto/frontend/contacto_usuarios.php" class="nav-link text-white dropdown-toggle" id="menuContacto"><i class="fas fa-phone"></i> Contacto</a>
-        </li>
-        
-    </ul>
-</nav>
-
-    </aside>
-
+    <!-- Contenido principal -->
     <main class="content p-4">
-        <div class="container-fluid">
-            <header class="header-title">
-                <h2>Dashboard</h2>
-                <p>Proximamente</p>
-            </header>
-            <!-- Aquí puedes añadir contenido o notificaciones, si lo necesitas -->
-            <p class="text-center"></p>
+        <div class="row">
+            <!-- Tarjeta: Usuarios -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary p-3 rounded-circle text-white me-3">
+                                <i class="fas fa-users fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Usuarios</h6>
+                                <h3 class="mb-0">
+                                    <?php
+                                    $resUsuarios = mysqli_query($conn, "SELECT COUNT(*) AS total FROM usuarios");
+                                    $numUsuarios = mysqli_fetch_assoc($resUsuarios)['total'];
+                                    echo $numUsuarios;
+                                    ?>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta: Empresas -->
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success p-3 rounded-circle text-white me-3">
+                                <i class="fas fa-building fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Empresas</h6>
+                                <h3 class="mb-0">
+                                    <?php
+                                    $resEmpresas = mysqli_query($conn, "SELECT COUNT(*) AS total FROM empresas");
+                                    $numEmpresas = mysqli_fetch_assoc($resEmpresas)['total'];
+                                    echo $numEmpresas;
+                                    ?>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <script src="../../js/aside.js"></script>
-    <script src="../../js/mostrarmenu.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Para mostrar la sidebar en móvil (opcional)
+        document.getElementById('openSidebar')?.addEventListener('click', function() {
+            document.getElementById('sidebarMenu').classList.add('show');
+        });
+        document.getElementById('toggleSidebar')?.addEventListener('click', function() {
+            document.getElementById('sidebarMenu').classList.remove('show');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/cssLoginNew.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-form">
@@ -16,11 +17,11 @@
             <h2>Inicia Sesión</h2>
             <form id="loginForm" action="login.php" method="POST">
                 <div class="input-group">
-                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    <input type="email" name="Email" placeholder="Correo Electrónico" required>
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <input type="password" name="Contra" placeholder="Contraseña" required>
                     <i class="fas fa-lock"></i>
                 </div>
                 <div class="options">
@@ -33,43 +34,51 @@
                     Iniciar Sesión
                     <span class="spinner"></span>
                 </button>
+
+                <div class="options justify-content-center mt-3">
+                    <a href="<?= base_url('registro') ?>">¿No tienes cuenta?, Regístrate</a>
+                </div>
+
                 <div class="social-login">
                     <p>Nuestras Redes Sociales</p>
                     <a href="https://www.facebook.com/intercovamex"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.youtube.com/@_icmx"><i class="fab fa-youtube"></i></a>
                     <a href="https://mx.linkedin.com/company/intercovamex"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://intercovamex.com/"><i class="fa-solid fa-globe"></i></a>
                 </div>
             </form>
         </div>
+
+        
+
+        <!--
         <div class="register-info">
             <canvas id="particleCanvas"></canvas>
-            <h2>Realiza Tu Servicio Técnico Aquí</h2>
+            <h2>Portal de Clientes</h2>
             <p>
                 Nuestro equipo de expertos está listo para ayudarte a resolver cualquier problema técnico de manera rápida y eficiente.
-                ¡Confía en nosotros para brindarte soluciones a la medida de tus necesidades!_
+                ¡Confía en nosotros para brindarte soluciones a la medida de tus necesidades!
             </p>
-            <a href="contactoclientes/frontend/contactos_clientes.php" class="btn-register">Contactanos</a>
-       <!-- <img src="uploads/icono-servicio.png" alt="Ícono de servicio técnico" class="service-icon">-->
-        </div>
+            <a href="contactoclientes/frontend/contactos_clientes.php" class="btn-register">Crear Cuenta</a>
+       <!- <img src="uploads/icono-servicio.png" alt="Ícono de servicio técnico" class="service-icon"> ->
+        </div>-->
         
-    <script>
+        <script>
         // Verifica si hay un parámetro de error en la URL
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('error') && urlParams.get('error') === 'invalid') {
-    Swal.fire({
-        icon: 'warning',
-        title: 'Error de autenticación',
-        text: 'Correo electrónico o contraseña incorrectos. Por favor, inténtalo nuevamente.',
-        showConfirmButton: false, // Oculta el botón "OK"
-        timer: 3000, // Duración en milisegundos (4 segundos)
-        timerProgressBar: true, // Muestra una barra de progreso
-    });
-        }
-    </script>
-
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error') && urlParams.get('error') === 'invalid') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Error de autenticación',
+                    text: 'Correo electrónico o contraseña incorrectos. Por favor, inténtalo nuevamente.',
+                    showConfirmButton: false, // Oculta el botón "OK"
+                    timer: 3000, // Duración en milisegundos (4 segundos)
+                    timerProgressBar: true, // Muestra una barra de progreso
+                });
+            }
+        </script>
         <script src="../js/validacioneslogin.js"></script>
         <script src="../js/atomos.js"></script>
         <script src="../js/login.js"></script>
-</body>
+    </body>
 </html>
-

@@ -20,8 +20,8 @@ body {
 /* Contenedor principal */
 .login-container {
     display: flex;
-    width: 900px;
-    height: 600px;
+    width: 60%;
+    height: 90%;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -29,6 +29,7 @@ body {
     transform: translateY(-50px);
     opacity: 0;
 }
+
 .register-info {
     position: relative;
     background-color: #002855; /* Fondo azul del contenedor */

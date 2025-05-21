@@ -180,7 +180,6 @@ body {
     text-decoration: underline;
 }
 
-
 /* Estilos para el contenedor de inicio de sesión */
 .login-container {
     background-color: #f4f8fc;  /* Fondo más suave para coincidir con el diseño */
@@ -189,9 +188,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 30px;
-    width: 100%;
+    width: 60%;
     max-width: 400px;
     margin: 0 auto;
+    height: 90%;
 }
 
 .login-message {

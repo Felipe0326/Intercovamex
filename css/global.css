@@ -1,0 +1,87 @@
+.sidebar {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #202940 80%, #4f5b93 100%);
+    color: #fff;
+    width: 260px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all .3s;
+    z-index: 1040;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+.sidebar .logo img {
+    width: 30%;
+    margin: 1rem auto;
+    display: block;
+}
+.sidebar .user-profile {
+    margin-bottom: 2rem;
+}
+.sidebar .welcome-text {
+    color: #adb5bd;
+    font-size: 0.9rem;
+}
+.sidebar .logout-btn {
+    background: #d9534f;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding: .4rem 1.2rem;
+}
+.sidebar .nav-link {
+    color: #fff;
+    margin: .25rem 0;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background .2s;
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background: #343a40;
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        left: -260px;
+    }
+    .sidebar.show {
+        left: 0;
+    }
+    .content {
+        margin-left: 0;
+    }
+}
+
+.content {
+    margin-left: 260px; /* debe ser igual al ancho de la sidebar */
+    min-height: 100vh;
+    background: #f5f6fa;
+}
+
+@media (max-width: 991px) {
+    .content {
+        margin-left: 0;
+    }
+}
+
+.navbar {
+    margin-left: 260px;
+    transition: margin-left 0.3s;
+}
+
+@media (max-width: 991px) {
+    .navbar .navbar-brand {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .navbar .container-fluid {
+        justify-content: center;
+    }
+    .navbar .btn {
+        position: absolute;
+        left: 1rem;
+    }
+}
